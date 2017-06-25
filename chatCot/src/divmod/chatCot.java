@@ -26,7 +26,8 @@ public class chatCot extends JFrame implements KeyListener{
 		JScrollPane.HORIZONTAL_SCROLLBAR_NEVER
 	);
 	
-	
+	// SOMEHOW I NEED TO ADD MYSQL TO THIS
+	//               
 	
 	String[][] chatBot={
 		//standard greetings
