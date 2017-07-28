@@ -10,6 +10,8 @@ import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 
 import java.lang.Math;
+//
+import java.sql.*;
 
 public class chatCot extends JFrame implements KeyListener{
 
@@ -27,7 +29,13 @@ public class chatCot extends JFrame implements KeyListener{
 	);
 	
 	// SOMEHOW I NEED TO ADD MYSQL TO THIS
-	//               
+	//  
+	/*Connection conn = null;
+	
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+		conn = DriverManager.getConnection("jbdc: mysql://localhost)
+	}*/
 	
 	String[][] chatBot={
 		//standard greetings
