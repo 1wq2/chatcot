@@ -30,12 +30,40 @@ public class chatCot extends JFrame implements KeyListener{
 	
 	// SOMEHOW I NEED TO ADD MYSQL TO THIS
 	//  
+<<<<<<< HEAD
 	/*Connection conn = null;
 	
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection("jbdc: mysql://localhost)
 	}*/
+=======
+	Connection conn = null;
+	
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+		conn = DriverManager.getConnection("jbdc: mysql://localhost/chatcot_db", "root", "");
+		
+		Statement sqlState = conn.createStatement();
+		
+		String selectStuff = "Select first_name from customer";
+		
+		ResultSet rows = sqlState.executeQuery(selectStuff);
+		
+		while(rows.next()){
+			System.out.println(rows.getString("first_name"));
+			
+		}
+	}
+	
+	catch(SQLException ex){
+		System.out.println("SQLException: " + ex.getMessage());
+		System.out.println("VendorError: " + ex.getErrorCode());
+	}
+	catch(ClassNotFoundException e){
+		e.printStackTrace();
+	}
+>>>>>>> add_database
 	
 	String[][] chatBot={
 		//standard greetings
