@@ -14,7 +14,7 @@ public class SQLUtil {
     private static final String scheme = "phr";
 
     // url of connection on MySQL server    CHANGE TO YOUR
-    private static final String url = "jdbc:mysql://localhost:3306/" + scheme;
+    private static final String url = "jdbc:mysql://localhost:3306/";
 
     // user and password for MySQL server   CHANGE TO YOUR
     private static final String user = "root";

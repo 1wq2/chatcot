@@ -103,6 +103,7 @@ public class ChatCot extends JFrame implements KeyListener {
 
             }
         });
+        chat.loadPhrases();
         setVisible(true);
     }
 
@@ -166,5 +167,9 @@ public class ChatCot extends JFrame implements KeyListener {
 
 	public void closingAction() {
 	    chat.shutdown();
+    }
+
+    public void firstStart() {
+	    chat.initialize();
     }
 }

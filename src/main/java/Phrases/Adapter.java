@@ -19,4 +19,5 @@ public interface Adapter {
     void deletePhrase(PhraseModel model);
     void deleteModel(PhraseModel model);
     void shutdown();
+    void create();
 }

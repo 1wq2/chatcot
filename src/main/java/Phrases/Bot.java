@@ -96,9 +96,9 @@ public class Bot {
         // FOR FIRST TIME START - NEED TO INITIALIZE BD !!!!!!!
         // initialize();
 
+    }
 
-
-
+    public void loadPhrases() {
         List<PhraseModel> list = adapter.listPhrases();
         for (PhraseModel entity : list) {
             if (types.contains(entity.getType())) {
@@ -108,6 +108,13 @@ public class Bot {
     }
 
     public void initialize() {
+        adapter.create();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         adapter.addPhrase("standard greetings", "hi");
         adapter.addPhrase("standard greetings", "hello");
         adapter.addPhrase("standard greetings", "hola");

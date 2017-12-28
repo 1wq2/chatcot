@@ -36,6 +36,7 @@ public class MySqlAdapter implements Adapter {
      * @param type - type of phrase
      * @param phrase - phrase
      */
+    @Override
     public void addPhrase(String type, String phrase) {
         util.execUpdate("INSERT INTO " + schemeName + "." + tableName + "(" + typeColumn + ", " + phraseColumn + ")" + " VALUES " + "(\"" + type + "\", \"" + phrase + "\");");
         log.info("Adding new phrase : (type = " + type + ", phrase = " + phrase + ") into (scheme = " + schemeName + ", table = " + tableName + ")");
@@ -45,6 +46,7 @@ public class MySqlAdapter implements Adapter {
      * getting all phrases from DataBase
      * @return - list of phrases
      */
+    @Override
     public List<PhraseModel> listPhrases() {
         ResultSet set = util.exec("SELECT * FROM " + schemeName + "." + tableName + ";");
         log.info("Getting all rows from (scheme = " + schemeName + ", table = " + tableName);
@@ -71,6 +73,7 @@ public class MySqlAdapter implements Adapter {
      * deleting list of phrases from DataBase
      * @param delList - list with phrases for deleting
      */
+    @Override
     public void deletePhrases(List<PhraseModel> delList) {
         for (PhraseModel model : delList) {
             deleteId(model);
@@ -82,6 +85,7 @@ public class MySqlAdapter implements Adapter {
      * deleting only phrase (not id and not type checking)
      * @param model - only phrase
      */
+    @Override
     public void deletePhrase(PhraseModel model) {
         util.execUpdate("DELETE FROM " + schemeName + "." + tableName + " WHERE " + phraseColumn + " = \"" + model.getPhrase() + "\";");
         log.info("Deleting (type = " + model.getType() + ", phrase = " + model.getPhrase() + ") from (scheme = " + schemeName + ", table = " + tableName + ")");
@@ -91,6 +95,7 @@ public class MySqlAdapter implements Adapter {
      * deleting only id (not type and not phrase check)
      * @param model - only id
      */
+    @Override
     public void deleteId(PhraseModel model) {
         util.execUpdate("DELETE FROM " + schemeName + "." + tableName + " WHERE " + idColumn + " = " + Integer.toString(model.getId()) + " ;");
         log.info("Deleting (id = " + model.getId() + ") from (scheme = " + schemeName + ", table = " + tableName + ")");
@@ -100,14 +105,23 @@ public class MySqlAdapter implements Adapter {
      * deleting by type and phrase
      * @param model - type and phrase
      */
+    @Override
     public void deleteModel(PhraseModel model) {
         util.execUpdate("DELETE FROM " + schemeName + "." + tableName + " WHERE " + phraseColumn + " = \"" + model.getPhrase() + "\" and " + typeColumn + " = \"" + model.getType() + "\" ;");
         log.info("Deleting (type = " + model.getType() + ", phrase = " + model.getPhrase() + ") from (scheme = " + schemeName + ", table = " + tableName + ")");
     }
 
+    @Override
+    public void create() {
+        util.execUpdate("CREATE SCHEMA " + SQLUtil.getScheme() + " DEFAULT CHARACTER SET utf8;");
+        util.execUpdate("CREATE TABLE " + SQLUtil.getScheme() + "." + tableName + " (" + idColumn + " INT NOT NULL AUTO_INCREMENT, " + typeColumn + " VARCHAR(100) NOT NULL, " + phraseColumn + " VARCHAR(200) NOT NULL, PRIMARY KEY(id), UNIQUE INDEX " + idColumn + "_UNIQUE (" + idColumn + " ASC)) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;");
+    }
+
+
     /**
      * closing connection from DataBase
      */
+    @Override
     public void shutdown() {
         util.shutdown();
         log.info("Shutdown connection");
