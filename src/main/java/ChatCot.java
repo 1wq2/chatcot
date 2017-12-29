@@ -4,8 +4,7 @@ import Story.StoryCollection;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 import java.sql.*;
 
 public class ChatCot extends JFrame implements KeyListener {
@@ -56,20 +55,57 @@ public class ChatCot extends JFrame implements KeyListener {
     }
 
     public void start() {
-		setSize(600,400);
-		setResizable(false);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setSize(600, 400);
+        setResizable(false);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		dialog.setEditable(false);
-		input.addKeyListener(this);
+        dialog.setEditable(false);
+        input.addKeyListener(this);
 
-		p.add(scroll);
-		p.add(input);
-		p.setBackground(new Color(255,200,0));
-		add(p);
+        p.add(scroll);
+        p.add(input);
+        p.setBackground(new Color(255, 200, 0));
+        add(p);
 
-		setVisible(true);
-	}
+        super.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+                closingAction();
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+
+            }
+        });
+        chat.loadPhrases();
+        setVisible(true);
+    }
 
 	public void keyPressed(KeyEvent e){
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -128,4 +164,12 @@ public class ChatCot extends JFrame implements KeyListener {
 	public void addText(String str){
 		dialog.setText(dialog.getText() + str);
 	}
+
+	public void closingAction() {
+	    chat.shutdown();
+    }
+
+    public void firstStart() {
+	    chat.initialize();
+    }
 }
