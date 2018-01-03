@@ -1,4 +1,4 @@
-package Phrases.PhrasesAdapter;
+package Phrases.DataBaseProcessing;
 
 
 public class PhraseModel {

@@ -1,4 +1,5 @@
-package Phrases.PhrasesAdapter;
+package Phrases.DataBaseProcessing.MySQL;
+import Phrases.DataBaseProcessing.SqlUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -7,8 +8,8 @@ import java.sql.*;
 /**
  * Class for working with DataBase (low level)
  */
-public class SQLUtil {
-    private static final Logger log = LogManager.getLogger(SQLUtil.class);
+public class MsqlUtil extends SqlUtil{
+    private static final Logger log = LogManager.getLogger(MsqlUtil.class);
 
     // scheme name on MySQL server          CHANGE TO YOUR
     private static final String scheme = "phr";
@@ -22,9 +23,9 @@ public class SQLUtil {
 
 
     private static Connection connection;
-    private static SQLUtil instance = null;
+    private static MsqlUtil instance = null;
 
-    private SQLUtil() {
+    private MsqlUtil() {
         try {
             log.info("Connecting to MySQL : (url = " + url + ", user = " + user + ", password = " + password + ").......");
             connection = DriverManager.getConnection(url, user, password);
@@ -41,18 +42,10 @@ public class SQLUtil {
      * @param sqlRequest - SQL request
      * @return - result of request
      */
+    @Override
     public ResultSet exec(String sqlRequest) {
-        try {
-            Statement statement = connection.createStatement();
-            statement.closeOnCompletion();
-            log.info("executing query = \"" + sqlRequest + "\"....");
-            return statement.executeQuery(sqlRequest);
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-            log.error("can't execute query = \"" + sqlRequest + "\"");
-        }
-        return null;
+        log.info("executing MySQL query = \"" + sqlRequest + "\"....");
+        return super.exec(sqlRequest);
     }
 
     /**
@@ -60,18 +53,10 @@ public class SQLUtil {
      * @param sqlRequest - SQL request for executing
      * @return - nothing
      */
+    @Override
     public int execUpdate(String sqlRequest) {
-        try {
-            Statement statement = connection.createStatement();
-            statement.closeOnCompletion();
-            log.info("executing query = \"" + sqlRequest + "\"....");
-            return statement.executeUpdate(sqlRequest);
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-            log.error("can't execute query = \"" + sqlRequest + "\"");
-        }
-        return -1;
+        log.info("executing MySQL query = \"" + sqlRequest + "\"....");
+        return super.execUpdate(sqlRequest);
     }
 
     /**
@@ -79,12 +64,12 @@ public class SQLUtil {
      */
     public void shutdown() {
         try {
-            log.info("closing connection to DataBase....");
+            log.info("closing MySQL connection to DataBase....");
             connection.close();
-            log.info("connection was closed");
+            log.info("MySQL connection was closed");
         } catch (SQLException e) {
             e.printStackTrace();
-            log.error("can't close connetion to DataBase");
+            log.error("can't close MySQL connection to DataBase");
         }
     }
 
@@ -93,12 +78,12 @@ public class SQLUtil {
      * SingleTone pattern
      * @return one copy of SQLUtil
      */
-    public static SQLUtil getInstance() {
+    public static MsqlUtil getInstance() {
         if (instance != null) {
             return instance;
         }
         else {
-            return new SQLUtil();
+            return new MsqlUtil();
         }
     }
 

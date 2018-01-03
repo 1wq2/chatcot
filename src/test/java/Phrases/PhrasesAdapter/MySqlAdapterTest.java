@@ -1,6 +1,8 @@
 package Phrases.PhrasesAdapter;
 
 
+import Phrases.DataBaseProcessing.MySQL.MySqlAdapter;
+import Phrases.DataBaseProcessing.PhraseModel;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

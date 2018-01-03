@@ -1,7 +1,8 @@
 package Phrases;
 
-import Phrases.PhrasesAdapter.MySqlAdapter;
-import Phrases.PhrasesAdapter.PhraseModel;
+import Phrases.DataBaseProcessing.Adapter;
+import Phrases.DataBaseProcessing.PhraseModel;
+import Phrases.DataBaseProcessing.SQLite.SQLiteAdapter;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -66,7 +67,7 @@ public class Bot {
     };
     */
 
-    public Bot() {
+    public Bot(Adapter adapter) {
         chatPhrases = new LinkedList<LinkedList<String>>();
         types = new ArrayList<String>();
         types.add("standard greetings");
@@ -90,7 +91,7 @@ public class Bot {
         types.add("default");
         chatPhrases.add(new LinkedList<String>());
 
-        adapter = new MySqlAdapter();
+        this.adapter = adapter;
 
 
         // FOR FIRST TIME START - NEED TO INITIALIZE BD !!!!!!!
