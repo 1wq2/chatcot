@@ -1,6 +1,9 @@
-package Phrases.PhrasesAdapter;
+package Phrases.DataBaseProcessing.MySQL;
 
-import Phrases.Adapter;
+import Phrases.DataBaseProcessing.Adapter;
+import Phrases.DataBaseProcessing.PhraseModel;
+import Phrases.DataBaseProcessing.MySQL.MsqlUtil;
+import Phrases.DataBaseProcessing.SQLite.SQLiteAdapter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,9 +19,9 @@ import java.util.List;
 public class MySqlAdapter implements Adapter {
     private static final Logger log = LogManager.getLogger(MySqlAdapter.class);
 
-    private SQLUtil util;
+    private MsqlUtil util;
 
-    private final String schemeName = SQLUtil.getScheme();
+    private final String schemeName = MsqlUtil.getScheme();
     private final String tableName = "phrases";
 
     private final String idColumn = "id";
@@ -27,7 +30,7 @@ public class MySqlAdapter implements Adapter {
 
 
     public MySqlAdapter() {
-        util = SQLUtil.getInstance();
+        util = MsqlUtil.getInstance();
         log.info("creating MySQL Adapter");
     }
 
@@ -49,23 +52,9 @@ public class MySqlAdapter implements Adapter {
     @Override
     public List<PhraseModel> listPhrases() {
         ResultSet set = util.exec("SELECT * FROM " + schemeName + "." + tableName + ";");
-        log.info("Getting all rows from (scheme = " + schemeName + ", table = " + tableName);
-        try {
-            if (set != null) {
-                LinkedList<PhraseModel> list = new LinkedList<PhraseModel>();
-                while (set.next()) {
-                    int id = set.getInt(1);
-                    String type = set.getString(2);
-                    String phrase = set.getString(3);
-                    list.add(new PhraseModel(id, type, phrase));
-                }
-                set.close();
-                return list;
-            }
-        }
-        catch (SQLException e) {
-            log.error(e.getMessage());
-        }
+        log.info("Getting all rows from MuSQL (scheme = " + schemeName + ", table = " + tableName);
+        List<PhraseModel> list = Adapter.getPhraseModels(set, log);
+        if (list != null) return list;
         return null;
     }
 
@@ -113,8 +102,8 @@ public class MySqlAdapter implements Adapter {
 
     @Override
     public void create() {
-        util.execUpdate("CREATE SCHEMA " + SQLUtil.getScheme() + " DEFAULT CHARACTER SET utf8;");
-        util.execUpdate("CREATE TABLE " + SQLUtil.getScheme() + "." + tableName + " (" + idColumn + " INT NOT NULL AUTO_INCREMENT, " + typeColumn + " VARCHAR(100) NOT NULL, " + phraseColumn + " VARCHAR(200) NOT NULL, PRIMARY KEY(id), UNIQUE INDEX " + idColumn + "_UNIQUE (" + idColumn + " ASC)) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;");
+        util.execUpdate("CREATE SCHEMA " + MsqlUtil.getScheme() + " DEFAULT CHARACTER SET utf8;");
+        util.execUpdate("CREATE TABLE " + MsqlUtil.getScheme() + "." + tableName + " (" + idColumn + " INT NOT NULL AUTO_INCREMENT, " + typeColumn + " VARCHAR(100) NOT NULL, " + phraseColumn + " VARCHAR(200) NOT NULL, PRIMARY KEY(id), UNIQUE INDEX " + idColumn + "_UNIQUE (" + idColumn + " ASC)) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;");
     }
 
 

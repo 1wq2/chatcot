@@ -1,4 +1,5 @@
 import Phrases.Bot;
+import Phrases.DataBaseProcessing.Adapter;
 import Story.Iterator;
 import Story.StoryCollection;
 
@@ -49,9 +50,9 @@ public class ChatCot extends JFrame implements KeyListener {
 		}
 	}
 
-	public ChatCot() {
+	public ChatCot(Adapter adapter) {
         super("Chat Cot");
-        chat = new Bot();
+        chat = new Bot(adapter);
     }
 
     public void start() {
