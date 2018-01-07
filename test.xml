@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phrases>
+  <phrase>
+      <type>standard greetings</type>
+      <value>hi</value>
+  </phrase>
+  <phrase>
+      <type>standard greetings</type>
+      <value>hello</value>
+  </phrase>
+  <phrase>
+      <type>standard greetings</type>
+      <value>hola</value>
+  </phrase>
+  <phrase>
+      <type>standard greetings</type>
+      <value>hey</value>
+  </phrase>
+  <phrase>
+      <type>standard greetings</type>
+      <value>hey man</value>
+  </phrase>
+  <phrase>
+      <type>standard greetings</type>
+      <value>how's it going</value>
+  </phrase>
+  <phrase>
+      <type>standard greetings</type>
+      <value>nice to meet you</value>
+  </phrase>
+  <phrase>
+      <type>standard greetings</type>
+      <value>eou look great today</value>
+  </phrase>
+  <phrase>
+      <type>standard greetings</type>
+      <value>look at you, you're so smart</value>
+  </phrase>
+  <phrase>
+      <type>special greetings</type>
+      <value>hi</value>
+  </phrase>
+  <phrase>
+      <type>special greetings</type>
+      <value>hello</value>
+  </phrase>
+  <phrase>
+      <type>special greetings</type>
+      <value>hey</value>
+  </phrase>
+  <phrase>
+      <type>special greetings</type>
+      <value>meow</value>
+  </phrase>
+  <phrase>
+      <type>special greetings</type>
+      <value>greetings</value>
+  </phrase>
+  <phrase>
+      <type>special greetings</type>
+      <value>i'm glad we can talk a bit</value>
+  </phrase>
+  <phrase>
+      <type>special greetings</type>
+      <value>hi, nice to meet you</value>
+  </phrase>
+  <phrase>
+      <type>special greetings</type>
+      <value>Meow!!!</value>
+  </phrase>
+  <phrase>
+      <type>special greetings</type>
+      <value>good afternoon</value>
+  </phrase>
+  <phrase>
+      <type>special greetings</type>
+      <value>hi! Let's talk a bit</value>
+  </phrase>
+  <phrase>
+      <type>special greetings</type>
+      <value>hello, we can talk about stuff</value>
+  </phrase>
+  <phrase>
+      <type>question greetings</type>
+      <value>how are you?</value>
+  </phrase>
+  <phrase>
+      <type>question greetings</type>
+      <value>how r you?</value>
+  </phrase>
+  <phrase>
+      <type>question greetings</type>
+      <value>how r u?</value>
+  </phrase>
+  <phrase>
+      <type>question greetings</type>
+      <value>how are u?</value>
+  </phrase>
+  <phrase>
+      <type>question greetings</type>
+      <value>what's new?</value>
+  </phrase>
+  <phrase>
+      <type>question greetings</type>
+      <value>what's going on?</value>
+  </phrase>
+  <phrase>
+      <type>question greetings</type>
+      <value>how's life?</value>
+  </phrase>
+  <phrase>
+      <type>question greetings</type>
+      <value>what's up?</value>
+  </phrase>
+  <phrase>
+      <type>greetings answer</type>
+      <value>good</value>
+  </phrase>
+  <phrase>
+      <type>greetings answer</type>
+      <value>doing well</value>
+  </phrase>
+  <phrase>
+      <type>greetings answer</type>
+      <value>fine</value>
+  </phrase>
+  <phrase>
+      <type>greetings answer</type>
+      <value>great</value>
+  </phrase>
+  <phrase>
+      <type>greetings answer</type>
+      <value>not good</value>
+  </phrase>
+  <phrase>
+      <type>greetings answer</type>
+      <value>I dunno :D</value>
+  </phrase>
+  <phrase>
+      <type>greetings answer</type>
+      <value>you tell me</value>
+  </phrase>
+  <phrase>
+      <type>greetings answer</type>
+      <value>still excellent</value>
+  </phrase>
+  <phrase>
+      <type>greetings answer</type>
+      <value>fine, trying to find another job</value>
+  </phrase>
+  <phrase>
+      <type>greetings answer</type>
+      <value>not good. Have you seen those milk prices? Cats will be angry</value>
+  </phrase>
+  <phrase>
+      <type>greetings answer</type>
+      <value>not bad, just live in my pretty cat's life</value>
+  </phrase>
+  <phrase>
+      <type>yes</type>
+      <value>yes</value>
+  </phrase>
+  <phrase>
+      <type>yes</type>
+      <value>speak</value>
+  </phrase>
+  <phrase>
+      <type>yes</type>
+      <value>talk</value>
+  </phrase>
+  <phrase>
+      <type>yes</type>
+      <value>i wanna speak, now</value>
+  </phrase>
+  <phrase>
+      <type>yes</type>
+      <value>talk to me, please</value>
+  </phrase>
+  <phrase>
+      <type>yes</type>
+      <value>please</value>
+  </phrase>
+  <phrase>
+      <type>yes</type>
+      <value>you</value>
+  </phrase>
+  <phrase>
+      <type>yes</type>
+      <value>go away</value>
+  </phrase>
+  <phrase>
+      <type>yes</type>
+      <value>stupid</value>
+  </phrase>
+  <phrase>
+      <type>no</type>
+      <value>no</value>
+  </phrase>
+  <phrase>
+      <type>no</type>
+      <value>NO</value>
+  </phrase>
+  <phrase>
+      <type>no</type>
+      <value>NO!!!!</value>
+  </phrase>
+  <phrase>
+      <type>no</type>
+      <value>Please</value>
+  </phrase>
+  <phrase>
+      <type>no</type>
+      <value>c'mon</value>
+  </phrase>
+  <phrase>
+      <type>no</type>
+      <value>stop it</value>
+  </phrase>
+  <phrase>
+      <type>no</type>
+      <value>i don't wanna be chatcot anymore</value>
+  </phrase>
+  <phrase>
+      <type>no</type>
+      <value>can i talk to you later</value>
+  </phrase>
+  <phrase>
+      <type>no</type>
+      <value>i really tired</value>
+  </phrase>
+  <phrase>
+      <type>no</type>
+      <value>give me a brake, man</value>
+  </phrase>
+  <phrase>
+      <type>no</type>
+      <value>we don't speak anymore</value>
+  </phrase>
+  <phrase>
+      <type>no</type>
+      <value>chatCot Inc is closed today, bye</value>
+  </phrase>
+  <phrase>
+      <type>no</type>
+      <value>i don't speak English</value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>can't speak now, sorry :(</value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>no, i don't think so</value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>please, repeat</value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>I don't get it</value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>I'm really trying, but I can understand a word!</value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>Not this again</value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>what? I don't think so</value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>let's not start this topic again</value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>I think, I'm not a real cat</value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>I can't imagene you said this again</value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>you're funny :)</value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>i don't think so</value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>It's wonderful idea</value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>look! just behind you!</value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>2X2=5</value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>Ich verstehe dich nicht</value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>can't work in this conditions</value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>please, shut up</value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>you're bad</value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>Tu enim operor non intellego</value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>oh my god</value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>i believe i can fly</value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>Nie rozumiem cie</value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>repeat yourself</value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>____ i believe i can touch the sky</value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>you could </value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>stop talking and go to work</value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>010001 010101010101 0101010101010 0110 101010100 0101010 010101</value>
+  </phrase>
+  <phrase>
+      <type>default</type>
+      <value>(i'm unavailable right now)</value>
+  </phrase>
+</phrases>
