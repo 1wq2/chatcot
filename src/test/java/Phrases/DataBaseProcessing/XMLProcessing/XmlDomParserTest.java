@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 
 public class XmlDomParserTest {
 
-    Adapter adapter = new XMLAdapter("test.xml", new XmlDomParser(),"");
+    Adapter adapter = new XmlAdapter("test.xml", new XmlDomParser());
     @Before
     public void setUp() throws Exception {
     }

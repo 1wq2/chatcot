@@ -1,40 +1,27 @@
 package Phrases.DataBaseProcessing.XMLProcessing;
 
 import Phrases.DataBaseProcessing.PhraseModel;
-import Phrases.DataBaseProcessing.XMLProcessing.XMLConstants;
 
-import static Phrases.DataBaseProcessing.XMLProcessing.XMLConstants.*;
+import static Phrases.DataBaseProcessing.XMLProcessing.XmlConstants.*;
 
 public class PhraseXmlAdapter {
 
-    private PhraseModel model;
-
-    public PhraseXmlAdapter(PhraseModel model) {
-        this.model = model;
-    }
-
-
-    public PhraseModel getModel() {
-        return model;
-    }
-
-    public void setModel(PhraseModel model) {
-        this.model = model;
-    }
-
-    public String parseToXML(int mask) {
-        String result = "";
+    public static String parseToXML(PhraseModel model, int mask) {
+        StringBuilder result = new StringBuilder();
         if ((mask & XMLBEGIN) == XMLBEGIN){
-            result += XMLBegin();
+            result.append(XMLBegin());
         }
-        result += ("  <phrase>\n");
-        result += ("      <type>" + this.model.getType() + "</type>\n");
-        result += ("      <value>" + this.model.getPhrase() + "</value>\n");
-        result += ("  </phrase>\n");
+        if (model != null) {
+            result.append("    <phrase>\n");
+            result.append("        <id>").append(model.getId()).append("</id>\n");
+            result.append("        <type>").append(model.getType()).append("</type>\n");
+            result.append("        <value>").append(model.getPhrase()).append("</value>\n");
+            result.append("    </phrase>\n");
+        }
         if ((mask & XMLEND) == XMLEND){
-            result += XMLEnd();
+            result.append(XMLEnd());
         }
-        return result;
+        return result.toString();
     }
 
 
@@ -46,7 +33,7 @@ public class PhraseXmlAdapter {
         if (models != null) {
             for (PhraseModel model : models) {
                 if (model != null) {
-                    result.append((new PhraseXmlAdapter(model)).parseToXML(XMLNONE));
+                    result.append(parseToXML(model, XMLNONE));
                 }
             }
         }

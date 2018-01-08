@@ -1,7 +1,12 @@
 package Phrases.DataBaseProcessing;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class PhraseModel {
+    private static final Logger log = LogManager.getLogger(PhraseModel.class);
+
     private int id;
     private String type;
     private String phrase;
