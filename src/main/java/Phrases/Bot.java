@@ -184,7 +184,7 @@ public class Bot {
         adapter.addPhrase("no", "i don't speak English");
 
 
-        adapter.addPhrase("default", "can't speak now, sorry :<");
+        adapter.addPhrase("default", "can't speak now, sorry :(");
         adapter.addPhrase("default", "no, i don't think so");
         adapter.addPhrase("default", "please, repeat");
         adapter.addPhrase("default", "I don't get it");

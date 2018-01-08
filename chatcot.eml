@@ -14,5 +14,6 @@
 		<level name="Maven: org.apache.logging.log4j:log4j-api:2.8.1" value="project"/>
 		<level name="Maven: org.apache.logging.log4j:log4j-core:2.8.1" value="project"/>
 		<level name="Maven: mysql:mysql-connector-java:5.1.34" value="project"/>
+		<level name="Maven: org.jdom:jdom2:2.0.6" value="project"/>
 	</levels>
 </component>
