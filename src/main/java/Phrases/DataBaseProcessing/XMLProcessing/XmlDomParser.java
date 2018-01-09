@@ -1,6 +1,8 @@
 package Phrases.DataBaseProcessing.XMLProcessing;
 
 import Phrases.DataBaseProcessing.PhraseModel;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -11,21 +13,15 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 
 
-/**
- * Created by Alexey on 15.04.2017.
- * The DOM parser for XML file. Uses as tool in XMLEditor
- */
 public class XmlDomParser implements Parsable {
+    private static final Logger log = LogManager.getLogger(XmlDomParser.class);
 
-    /**
-     * Parse XML file for getting array of people, saving in file
-     * @param path the path of xml file for parse
-     * @return the array of people in xml file (path)
-     */
+
     public PhraseModel[] parseFromXML(String path) {
         try {
             File inputFile = new File(path);
-            if (!inputFile.exists()){
+            if (!inputFile.exists()) {
+                log.info("file doesn't exist");
                 return null;
             }
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -48,49 +44,53 @@ public class XmlDomParser implements Parsable {
             return people;
         } catch (Exception e) {
             e.printStackTrace();
+            log.error(e.getMessage());
         }
         return null;
     }
 
-    /**
-     * Parse XML file for getting user with @param index from this xml file
-     * @param path the path of xml file for parsing
-     * @param index the index of getting user
-     * @return the user with @param index
-     */
+
     public PhraseModel parseFromXML(String path, int index) {
         try {
             String type = null;
             String phrase = null;
+            int id = 0;
 
             File inputFile = new File(path);
+            if (!inputFile.exists()) {
+                log.info("file doesn't exists");
+                return null;
+            }
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(inputFile);
             doc.getDocumentElement().normalize();
             NodeList nList = doc.getElementsByTagName("phrase");
-            if (index < 0 || index >= nList.getLength()){
+            if (index < 0 || index >= nList.getLength()) {
                 return null;
             }
             Node nNode = nList.item(index);
             if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                String idString = getXMLArgument(nNode, "id");
+                if (idString != null) {
+                    id = Integer.valueOf(idString);
+                }
+                else {
+                    id = 0;
+                }
                 type = getXMLArgument(nNode, "type");
                 phrase = getXMLArgument(nNode, "value");
             }
-            return new PhraseModel(type, phrase);
+            return new PhraseModel(id, type, phrase);
         }catch (Exception e){
             e.printStackTrace();
+            log.error(e.getMessage());
             return null;
         }
     }
 
 
-    /**
-     * private method for getting value of attribute from Node in XML file
-     * @param nNode the Node in XML file
-     * @param attribute the name of attribute to getting it value
-     * @return the value of this argument
-     */
+
     private static String getXMLArgument(Node nNode, String attribute) {
         if (nNode.getNodeType() == Node.ELEMENT_NODE) {
             Element eElement = (Element) nNode;

@@ -111,7 +111,7 @@ public class Bot {
     public void initialize() {
         adapter.create();
         try {
-            Thread.sleep(2000);
+            Thread.sleep(200);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
