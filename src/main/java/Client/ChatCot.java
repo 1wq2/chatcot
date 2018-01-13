@@ -1,31 +1,36 @@
+package Client;
+
 import Phrases.Bot;
 import Phrases.DataBaseProcessing.Adapter;
+import Phrases.DataBaseProcessing.PhraseModel;
 import Story.Iterator;
 import Story.StoryCollection;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.*;
+import java.net.Socket;
 import java.sql.*;
 
 public class ChatCot extends JFrame implements KeyListener {
+    private static final Logger log = LogManager.getLogger(ChatCot.class);
 
 	private static final long serialVersionUID = 1L;
-	JPanel p =new JPanel();
-	JTextArea dialog=new JTextArea(20,50);
-	JTextArea input=new JTextArea(1,50);
-	JScrollPane scroll=new JScrollPane(
+	private JPanel p = new JPanel();
+	private JTextArea dialog = new JTextArea(20,50);
+	private JTextArea input = new JTextArea(1,50);
+	private JScrollPane scroll = new JScrollPane (
 			dialog,
 			JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
-			JScrollPane.HORIZONTAL_SCROLLBAR_NEVER
-	);
+			JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
 	// SOMEHOW I NEED TO ADD MYSQL TO THIS
 
-	Connection conn = null;
-	StoryCollection story = new StoryCollection();
-
-	Bot chat;
+	private Connection conn = null;
+	private StoryCollection story = new StoryCollection();
 
 	public void initial() {
 		try {
@@ -52,7 +57,6 @@ public class ChatCot extends JFrame implements KeyListener {
 
 	public ChatCot(Adapter adapter) {
         super("Chat Cot");
-        chat = new Bot(adapter);
     }
 
     public void start() {
@@ -104,7 +108,6 @@ public class ChatCot extends JFrame implements KeyListener {
 
             }
         });
-        chat.loadPhrases();
         setVisible(true);
     }
 
@@ -133,8 +136,14 @@ public class ChatCot extends JFrame implements KeyListener {
             quote = quote.substring(0, quote.length()-1);
         }
         quote = quote.trim();
-
-        addText(chat.check(quote) + "\n");
+        try {
+            Socket socket = new Socket("localhost",3345);
+            sendToServer(quote + "\n", socket);
+            addText("\n" + getFromServer(socket) + "\n");
+            socket.close();
+        } catch (IOException e) {
+            log.error(e.getMessage());
+        }
     }
 
     private void upAction() {
@@ -162,15 +171,25 @@ public class ChatCot extends JFrame implements KeyListener {
 
 	public void keyTyped(KeyEvent e){}
 
+	public void closingAction() {
+
+    }
+
 	public void addText(String str){
 		dialog.setText(dialog.getText() + str);
 	}
 
-	public void closingAction() {
-	    chat.shutdown();
+    public void sendToServer(String message, Socket socket) throws IOException {
+        PrintWriter writer = new PrintWriter(socket.getOutputStream());
+        writer.write(message);
+        writer.flush();
+        //writer.close();
     }
 
-    public void firstStart() {
-	    chat.initialize();
+    public String getFromServer(Socket socket) throws IOException {
+	    BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        log.info("START GETTING");
+        //reader.readLine();
+        return reader.readLine();
     }
 }
