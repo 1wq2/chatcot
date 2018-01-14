@@ -251,7 +251,7 @@ public class Bot {
             if(chatPhrases.get(j * 2).contains(quote.toLowerCase())) {
                 response = 2;
                 int r = (int)Math.floor(Math.random() * chatPhrases.get((j * 2) + 1).size());
-                result.append("\n-->ChatCot \t").append(chatPhrases.get((j * 2) + 1).get(r));
+                result.append("-->Client.ChatCot \t").append(chatPhrases.get((j * 2) + 1).get(r));
             }
             j++;
             if(j * 2 == chatPhrases.size() - 1 && response == 0){
@@ -260,9 +260,9 @@ public class Bot {
         }
 
         //-----default--------------
-        if(response == 1){
+        if(response == 1) {
             int r = (int)Math.floor(Math.random() * chatPhrases.get(chatPhrases.size() - 1).size());
-            result.append("\n-->ChatCot\t").append(chatPhrases.get(chatPhrases.size() - 1).get(r));
+            result.append("-->Client.ChatCot\t").append(chatPhrases.get(chatPhrases.size() - 1).get(r));
         }
         return result.toString();
     }
